@@ -67,6 +67,13 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          name: 'fonts/[name].[hash:7].[ext]'
+        }
       }
     ]
   },
@@ -88,29 +95,35 @@ module.exports = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    }),
-    /*
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'public/index.html',
-      inject: true
-    }),
-    */
-  ])
+  module.exports.devtool = '#source-map',
+    // http://vue-loader.vuejs.org/en/workflow/production.html
+    module.exports.plugins = (module.exports.plugins || []).concat([
+      /*new webpack.ProvidePlugin({
+        $: 'jquery',
+        jquery: 'jquery',
+        'window.jQuery': 'jquery',
+        jQuery: 'jquery'
+      }),*/
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: '"production"'
+        }
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true,
+        compress: {
+          warnings: false
+        }
+      }),
+      new webpack.LoaderOptionsPlugin({
+        minimize: true
+      }),
+      /*
+      new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: 'public/index.html',
+        inject: true
+      }),
+      */
+    ])
 }
