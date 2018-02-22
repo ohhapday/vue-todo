@@ -5,7 +5,10 @@
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Todo 입력" v-model="message">
           <span class="input-group-btn">
-              <button type="button" class="btn btn-success" @click="postData">저장</button>
+              <button type="button" class="btn btn-success" @click="postData">
+                <i class="fa fa-save"></i>
+                저장
+              </button>
           </span>
         </div>
       </div>

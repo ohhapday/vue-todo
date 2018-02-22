@@ -30,14 +30,20 @@
     methods: {
       postData(message) {
         this.messages.push(message);
+        localStorage.setItem('messages', JSON.stringify(this.messages));
       },
       deleteData(index) {
         this.messages.splice(index, 1);
+        localStorage.setItem('messages', JSON.stringify(this.messages));
       },
       deleteAll() {
-        this.messages = []
+        this.messages = [];
+        localStorage.setItem('messages', JSON.stringify(this.messages));
       }
-    }
+    },
+    created() {
+      this.messages = JSON.parse(localStorage.getItem('messages')) || [];
+    },
   }
 </script>
 
