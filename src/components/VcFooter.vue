@@ -2,7 +2,10 @@
   <div class="footer">
     <div class="row">
       <div class="col-sm-12">
-        <button type="button" class="btn btn-warning btn-flat" @click="clearTodo">전체 삭제</button>
+        <button type="button" class="btn btn-warning btn-flat" @click="deleteAll">
+          <i class="fa fa-trash-o"></i>
+          전체 삭제
+        </button>
       </div>
     </div>
   </div>
@@ -12,8 +15,8 @@
   export default {
     name: "vc-footer",
     methods: {
-      clearTodo() {
-        alert('clear all');
+      deleteAll() {
+        this.$emit('deleteAll');
       }
     }
 

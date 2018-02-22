@@ -1,14 +1,5 @@
 <template>
   <div>
-    <!--
-    <div class="inputBox shadow">
-      <input type="text" v-model="newTodoItem" placeholder="Type what you have to do" v-on:keyup.enter="addTodo">
-      <span class="addContainer" v-on:click="addTodo">
-        <i class="addBtn fa fa-plus" aria-hidden="true"></i>
-      </span>
-    </div>
-    -->
-
     <div class="row">
       <div class="col-sm-12">
         <div class="input-group">
@@ -31,6 +22,7 @@
     methods: {
       postData() {
         this.$emit('postData', this.message);
+        this.message = '';
       }
     },
     data() {
