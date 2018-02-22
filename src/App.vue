@@ -67,13 +67,22 @@
       },
       copyStorage() {
         // localStorage.setItem('messages', JSON.stringify(this.messages));
-        // async 처리 어떻게???
         let myData = db.ref('myData/' + dbKey);
         console.log(this.messages);
         myData.update(this.messages);
       }
     },
   }
+
+  /**
+   * 질문 사항
+   * 1. async 처리 어떻게???   쓰기만 되고 변경 처리??
+   *    - 이 부분은 파이어베이스와 고유key 정책과 관련???
+   * 2. index 파일 처리
+   * 3. build.js의 크기
+   * 4. firebase-init.js 처리 어떻게
+    */
+
 </script>
 
 <style>
