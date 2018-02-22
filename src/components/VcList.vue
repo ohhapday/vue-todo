@@ -4,7 +4,7 @@
       <ul>
         <transition-group name="list">
           <li v-for="(value, index) in propsdata" :key="index">
-            {{value}} [{{index}}]
+            [{{index}}] {{value}}
             <button class="btn btn-danger pull-right" @click="deleteData(index)">
               <i class="fa fa-trash"></i>
               삭제
