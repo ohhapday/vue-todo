@@ -73,6 +73,7 @@
    * 3. build.js의 크기
    * 4. firebase-init.js 처리 어떻게
    * 5. Vue의 실시간 data와 firebase의 실시간 data 연동 방법
+   * 6. firebase의 키 처리 방식(왜 배열은 안 쓰는지?)
    */
 
 </script>
