@@ -3,9 +3,9 @@
     <div class="col-sm-12">
       <ul>
         <transition-group name="list">
-          <li v-for="(value, index) in propsdata" :key="index">
-            [{{index}}] {{value}}
-            <button class="btn btn-danger pull-right" @click="deleteData(index)">
+          <li v-for="(value, key) in propsdata" :key="key">
+            [{{key}}] {{value}}
+            <button class="btn btn-danger pull-right" @click="deleteData(key)">
               <i class="fa fa-trash"></i>
               삭제
             </button>
@@ -21,8 +21,8 @@
     name: "vc-list",
     props: ['propsdata'],
     methods: {
-      deleteData(index) {
-        this.$emit('deleteData', index);
+      deleteData(key) {
+        this.$emit('deleteData', key);
       }
     }
   }

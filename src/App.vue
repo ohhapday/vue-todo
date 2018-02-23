@@ -41,47 +41,39 @@
     },
     data() {
       return {
-        messages: []
+        messages: {}
       }
     },
     created() {
       // this.messages = JSON.parse(localStorage.getItem('messages')) || [];
       let self = this;
-      dbRef.limitToLast(1).on('child_added', function (data) {
+
+      dbRef.on('value', function (data) {
         self.messages = data.val();
-        dbKey = data.key;
       });
     },
     methods: {
       postData(message) {
-        this.messages.push(message);
-        this.copyStorage();
+        dbRef.push(message);
       },
-      deleteData(index) {
-        this.messages.splice(index, 1);
-        this.copyStorage();
+      deleteData(key) {
+        dbRef.child(key).remove();
       },
       deleteAll() {
-        this.messages = [];
-        this.copyStorage();
+        dbRef.remove();
       },
-      copyStorage() {
-        // localStorage.setItem('messages', JSON.stringify(this.messages));
-        let myData = db.ref('myData/' + dbKey);
-        console.log(this.messages);
-        myData.update(this.messages);
-      }
     },
   }
 
   /**
    * 질문 사항
-   * 1. async 처리 어떻게???   쓰기만 되고 변경 처리??
+   * 1. async 처리 어떻게???   쓰기만 되고 업데이트/삭제 처리??
    *    - 이 부분은 파이어베이스와 고유key 정책과 관련???
-   * 2. index 파일 처리
+   * 2. index.html 처리
    * 3. build.js의 크기
    * 4. firebase-init.js 처리 어떻게
-    */
+   * 5. Vue의 실시간 data와 firebase의 실시간 data 연동 방법
+   */
 
 </script>
 
